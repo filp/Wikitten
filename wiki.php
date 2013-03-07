@@ -65,7 +65,7 @@ class Wiki
             exit();
         }
 
-        $source    = file_get_contents($path);
+        $source = $original_source = file_get_contents($path);
         $extension = pathinfo($path, PATHINFO_EXTENSION);
         $renderer  = $this->_getRenderer($extension);
         $page_data = $this->_default_page_data;
@@ -85,7 +85,7 @@ class Wiki
 
         return $this->_view('render', array(
             'html'      => $html,
-            'source'    => $source,
+            'source'    => $original_source,
             'extension' => $extension,
             'parts'     => $parts,
             'page'      => $page_data
